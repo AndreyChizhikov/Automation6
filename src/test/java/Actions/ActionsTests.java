@@ -11,37 +11,45 @@ import pages.DragAndDropPage;
 public class ActionsTests extends BaseTest {
 
     @Test
-    public void dragAndDrop()
-    {
+    public void dragAndDrop() {
         webDriver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
 
-        String expectedColor ="rgb(0, 255, 0)";
+        String expectedColor = "rgb(0, 255, 0)";
 
         WebElement capital = webDriver.findElement(By.id("box6"));
         WebElement country = webDriver.findElement(By.id("box106"));
 
         new Actions(webDriver)
-                .dragAndDrop(capital,country).perform();
+                .dragAndDrop(capital, country).perform();
 
         String styleAfterMoving = capital.getAttribute("style");
 
         Assert.assertTrue(styleAfterMoving.contains(expectedColor));
     }
+
     @Test
-    public void dragAndDropTwo()
-    {
+    public void dragAndDropTwo() {
         webDriver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
         String expectedColor = "rgb(0, 255, 0)";
 
         DragAndDropPage dragAndDropPage = new DragAndDropPage(webDriver);
 
-         String actualStyle = dragAndDropPage
-                 .moveRomeToItaly()
-                 .getRomeStyleInfo();
+        String actualStyle = dragAndDropPage
+                .moveRomeToItaly()
+                .getRomeStyleInfo();
 
         Assert.assertTrue(actualStyle.contains(expectedColor));
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 
