@@ -1,5 +1,8 @@
 package base;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,5 +22,18 @@ public abstract class BaseTest {
     public void quitDriver()
     {
         webDriver.quit();
+    }
+
+
+
+    @Attachment(type = "image/png")
+    public byte[] takeScreenshot(WebDriver driver)
+    {
+        byte[] result = null;
+        if(driver!=null)
+        {
+            result =((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        }
+        return result;
     }
 }

@@ -1,6 +1,7 @@
 package Actions;
 
 import base.BaseTest;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,12 +29,18 @@ public class ActionsTests extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Owner("Andrii")
+    @Epic("Epic")
+    @Feature("Feature")
+    @Story("Story")
     public void dragAndDropTwo() {
         webDriver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
         String expectedColor = "rgb(0, 255, 0)";
 
         DragAndDropPage dragAndDropPage = new DragAndDropPage(webDriver);
 
+        takeScreenshot(webDriver);
         String actualStyle = dragAndDropPage
                 .moveRomeToItaly()
                 .getRomeStyleInfo();
