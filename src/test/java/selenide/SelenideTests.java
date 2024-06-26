@@ -1,6 +1,8 @@
 package selenide;
 
+import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import selenidePages.WelcomePage;
 
@@ -9,9 +11,16 @@ import static com.codeborne.selenide.Condition.*;
 
 public class SelenideTests {
 
+    @BeforeClass
+    void setHeadless()
+    {
+        Configuration.headless = true;
+    }
+
     @Test
     public void selenideTests()
     {
+
         String expectedTitleText = "Новини";
 
        open("https://prozorro.gov.ua/uk");
